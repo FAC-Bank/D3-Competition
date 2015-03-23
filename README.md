@@ -6,22 +6,22 @@ We have chosen to look at the National household survey data and whithin that we
 
 By the end of the we hope to depoly the app on Heroku.
 
-Monday
+### Monday
 * Research and extract the data by the end of the day
 * Decide which type of visualisation we would like to go for
 
-Tuesday 
+### Tuesday 
 * Have a basic skeleton of the visualisation 
 * Decide whether we want to add any other data to our dataset
 
-Wednesday
+### Wednesday
 * Work on making the visualisation appealling, hashtag beautification
 * Think about adding features to the app
 
-Thursday
+### Thursday
 * More beautification, modification and personalisation
 * Stretch goal: use the talkie app to create an animation
 
-Friday 
+### Friday 
 * Deploy on Heroku
 * Stretch goal
