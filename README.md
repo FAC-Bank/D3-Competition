@@ -1,1 +1,1 @@
-# d3-competition
+# The Bank of England Data Visulisation Competition
