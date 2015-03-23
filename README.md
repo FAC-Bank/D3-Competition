@@ -25,3 +25,4 @@ By the end of the week we hope to deply the app on Heroku.
 ### Friday 
 * Deploy on Heroku
 * Stretch goal
+* Party
