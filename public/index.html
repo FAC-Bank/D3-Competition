@@ -24,9 +24,9 @@
     // // --------------- 2008 data ---------------- \\ \\
 
 // Import initial data into document \\
-d3.csv("../assets/2008data.csv", function(dataset08) {
-    d3.csv("../assets/2010data.csv", function(dataset10) {
-        d3.csv("../assets/2013data.csv", function(dataset13) {
+d3.csv("2008data.csv", function(dataset08) {
+    d3.csv("2010data.csv", function(dataset10) {
+        d3.csv("2013data.csv", function(dataset13) {
 
             // Convert each value into an integer to allow numerical operations \\
             dataset08.forEach(function(d) {
@@ -105,7 +105,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 .attr({
                     "class": "qual",
                     x: function(d, i) { return xScale(i); },
-                    y: function(d) { return yScaleQual(d.qualNum); },
+                    y: function(d) { return yScaleQual(d.qualNum) - (h / 40); },
                     "font-size": "8px",
                 });
 
@@ -125,18 +125,18 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 });
 
             // Add text labels showing average income for each qualification \\
-            svg.selectAll("text.inc")
-                .data(dataset08)
-                .enter()
-                .append("text")
-                .text(function(d) { return d.avgInc; })
-                .attr({
-                    "class": "inc",
-                    x: function(d, i) { return xScale(i) + xScale.rangeBand() / 2; },
-                    y: function(d) { return yScaleInc(d.avgInc) - h / 50;  },
-                    "font-size": "10px",
-                    "text-anchor": "middle",
-                });
+            // svg.selectAll("text.inc")
+            //     .data(dataset08)
+            //     .enter()
+            //     .append("text")
+            //     .text(function(d) { return d.avgInc; })
+            //     .attr({
+            //         "class": "inc",
+            //         x: function(d, i) { return xScale(i) + xScale.rangeBand() / 2; },
+            //         y: function(d) { return yScaleInc(d.avgInc) - h / 50;  },
+            //         "font-size": "10px",
+            //         "text-anchor": "middle",
+            //     });
 
 
             // Append left, right and bottom axes to SVG \\
@@ -214,7 +214,8 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 svg.selectAll("rect")
                     .data(dataset08)
                     .transition()
-                    .duration(1000)
+                    .delay(function(d, i) { return i / dataset08.length * 1000; })
+                    // .duration(1000)
                     .attr({
                         y: function(d) { return (yScaleQual(d.qualNum)); },
                         "height": function(d) { return h - yScaleQual(d.qualNum) - padding; },
@@ -230,7 +231,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     .text(function(d) { return d.qual; })
                     .attr({
                         x: function(d, i) { return xScale(i); },
-                        y: function(d) { return yScaleQual(d.qualNum); },
+                        y: function(d) { return yScaleQual(d.qualNum) - (h / 40); },
                     });
 
 
@@ -238,22 +239,24 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 svg.selectAll("circle")
                     .data(dataset08)
                     .transition()
-                    .duration(1000)
+                    .delay(function(d, i) { return i / dataset10.length * 1000; })
+                    .transition()
+                    // .duration(1000)
                     .attr({
                         cy: function(d) { return yScaleInc(d.avgInc);  },
                     });
 
                 // Add text labels showing average income for each qualification \\
-                svg.selectAll("text.inc")
-                    .data(dataset08)
-                    .transition()
-                    .duration(1000)
-                    .text(function(d) { return d.avgInc; })
-                    .attr({
-                        "class": "inc",
-                        y: function(d) { return yScaleInc(d.avgInc);  },
-                        "font-size": "10px",
-                    });
+                // svg.selectAll("text.inc")
+                //     .data(dataset08)
+                //     .transition()
+                //     .duration(1000)
+                //     .text(function(d) { return d.avgInc; })
+                //     .attr({
+                //         "class": "inc",
+                //         y: function(d) { return yScaleInc(d.avgInc);  },
+                //         "font-size": "10px",
+                //     });
 
 
                 svg.select(".yl.axis")
@@ -332,7 +335,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     .text(function(d) { return d.qual; })
                     .attr({
                         x: function(d, i) { return xScale(i); },
-                        y: function(d) { return yScaleQual(d.qualNum); },
+                        y: function(d) { return yScaleQual(d.qualNum) - (h / 40); },
                     });
 
 
@@ -346,17 +349,17 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                         cy: function(d) { return yScaleInc(d.avgInc);  },
                     });
 
-                // Add text labels showing average income for each qualification \\
-                svg.selectAll("text.inc")
-                    .data(dataset10)
-                    .transition()
-                    .delay(function(d, i) { return i / dataset10.length * 1000; })
-                    // .duration(1000)
-                    .text(function(d) { return d.avgInc; })
-                    .attr({
-                        "class": "inc",
-                        y: function(d) { return yScaleInc(d.avgInc);  },
-                    });
+                // // Add text labels showing average income for each qualification \\
+                // svg.selectAll("text.inc")
+                //     .data(dataset10)
+                //     .transition()
+                //     .delay(function(d, i) { return i / dataset10.length * 1000; })
+                //     // .duration(1000)
+                //     .text(function(d) { return d.avgInc; })
+                //     .attr({
+                //         "class": "inc",
+                //         y: function(d) { return yScaleInc(d.avgInc);  },
+                //     });
 
 
                 svg.select(".yl.axis")
@@ -413,7 +416,8 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 svg.selectAll("rect")
                     .data(dataset13)
                     .transition()
-                    .duration(1000)
+                    .delay(function(d, i) { return i / dataset13.length * 1000; })
+                    // duration(1000)
                     .attr({
                         y: function(d) { return (yScaleQual(d.qualNum)); },
                         "height": function(d) { return h - yScaleQual(d.qualNum) - padding; },
@@ -429,7 +433,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     .text(function(d) { return d.qual; })
                     .attr({
                         x: function(d, i) { return xScale(i); },
-                        y: function(d) { return yScaleQual(d.qualNum); },
+                        y: function(d) { return yScaleQual(d.qualNum) - (h / 40); },
                     });
 
 
@@ -437,22 +441,23 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                 svg.selectAll("circle")
                     .data(dataset13)
                     .transition()
-                    .duration(1000)
+                    .delay(function(d, i) { return i / dataset13.length * 1000; })
+                    // .duration(1000)
                     .attr({
                         cy: function(d) { return yScaleInc(d.avgInc);  },
                     });
 
                 // Add text labels showing average income for each qualification \\
-                svg.selectAll("text.inc")
-                    .data(dataset13)
-                    .transition()
-                    .duration(1000)
-                    .text(function(d) { return d.avgInc; })
-                    .attr({
-                        "class": "inc",
-                        y: function(d) { return yScaleInc(d.avgInc);  },
-                        "font-size": "10px",
-                    });
+                // svg.selectAll("text.inc")
+                //     .data(dataset13)
+                //     .transition()
+                //     .duration(1000)
+                //     .text(function(d) { return d.avgInc; })
+                //     .attr({
+                //         "class": "inc",
+                //         y: function(d) { return yScaleInc(d.avgInc);  },
+                //         "font-size": "10px",
+                //     });
 
 
                 svg.select(".yl.axis")

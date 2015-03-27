@@ -12,9 +12,7 @@ server.route({
     path: "/{param}",
     handler: {
         directory: {
-            path: "./assets",
-            listing: false,
-            index: true
+            path: Path.join(__dirname) + "/public"
         }
     }
 });
