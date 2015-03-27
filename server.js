@@ -7,7 +7,7 @@ server.connection({
     host: "localhost"
 });
 
-server.route({
+server.route([{
     method: 'GET',
     path: '/{filename}',
     handler: {
@@ -15,6 +15,14 @@ server.route({
             path: Path.join(__dirname, "/d3")
         }
     }
-});
+}, {
+    method: "GET",
+    path: "/graphs",
+    handler: function(request, reply){
+        reply.file("../assets");
+    }
+    
+}]);
+
 
 server.start();
