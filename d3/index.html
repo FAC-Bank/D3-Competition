@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>D3 CSV Practice</title>
-        <script type="text/javascript" src="./d3.js"></script>
+        <script type="text/javascript" src="/d3/d3.js"></script>
         <style type="text/css">
 
             .axis path,
@@ -24,12 +24,13 @@
         <button type="button" id="d2013">Click for 2013 data</button>
         <script type="text/javascript">
 
+    // // ------------------------------------------ \\ \\
     // // --------------- 2008 data ---------------- \\ \\
 
 // Import initial data into document \\
-d3.csv("./2008data.csv", function(dataset08) {
-    d3.csv("./2010data.csv", function(dataset10) {
-        d3.csv("./2013data.csv", function(dataset13) {
+d3.csv("/views/2008data.csv", function(dataset08) {
+    d3.csv("/views/2010data.csv", function(dataset10) {
+        d3.csv("/views/2013data.csv", function(dataset13) {
 
             // Convert each value into an integer to allow numerical operations \\
             dataset08.forEach(function(d) {
