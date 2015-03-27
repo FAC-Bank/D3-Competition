@@ -1,18 +1,20 @@
 var Hapi = require('hapi');
-var Server = new Hapi.server();
+var server = new Hapi.Server();
 var Path   = require("path");
 
-Server.connection({
+server.connection({
     port: 8000,
     host: "localhost"
 });
 
-Server.route({
+server.route({
     method: 'GET',
-    path: '/',
+    path: '/{filename}',
     handler: {
-        file: Path.join(__dirname, "/d3")
+        directory: {
+            path: Path.join(__dirname, "/d3")
+        }
     }
 });
 
-Server.start();
+server.start();
