@@ -1,4 +1,4 @@
-var Hapi = require('hapi');
+var Hapi = require("hapi");
 var server = new Hapi.Server();
 var Path   = require("path");
 
@@ -7,22 +7,25 @@ server.connection({
     host: "localhost"
 });
 
-server.route([{
-    method: 'GET',
-    path: '/{filename}',
+server.route({
+    method: "GET",
+    path: "/{param}",
     handler: {
         directory: {
-            path: Path.join(__dirname, "/d3")
+            path: "./assets",
+            listing: false,
+            index: true
         }
     }
-}, {
-    method: "GET",
-    path: "/graphs",
-    handler: function(request, reply){
-        reply.file("../assets");
-    }
-    
-}]);
+});
+
+    // method: "GET",
+    // path: "/graphs",
+    // handler: function(request, reply){
+    //     reply.file(__dirname, "/assets/2008data.csv");
+    // }
+// }]);
 
 
 server.start();
+console.log("Server running at port 8000.");
