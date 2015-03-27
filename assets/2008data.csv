@@ -1,9 +1,10 @@
-index,qual,qualNum,avgInc,
-1,masters/phd or equivalent,52,48091.10,
-2,bachelor degree or equivalent (=nvq4),160,37127.33,
-3,a-level or equivalent (=nvq3),185,32235.77,
-4,vocational qualifications (=nvq1+2),94,24954.60,
-5,gcse/o-level/cse,110,27167.30,
-6,other,55,20853.91,
-7,still studying,34,18699.60,
-8,no formal qualifications,65,15265.71,
+,qual,qualNum,avgInc,percent
+,Masters/PhD,71,48091.10,5.24
+,Bachelor degree (nvq4),223,37127.33,16.46
+,A-level (nvq3),218,32235.77,16.01
+,Vocational (nvq1+2),128,24954.60,9.45
+,GCSE/O-level,298,27167.30,21.99
+,Other,103,20853.91,7.60
+,Still in study,5,18699.60,0.37
+,No formal qualifications,309,15265.71,22.80
+,,,,
