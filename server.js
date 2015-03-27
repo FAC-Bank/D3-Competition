@@ -12,13 +12,10 @@ server.route({
     path: "/{param}",
     handler: {
         directory: {
-            path: "./assets",
-            listing: false,
-            index: true
+            path: Path.join(__dirname, "/public")
         }
     }
 });
-
 
 server.start();
 console.log("Server running at port 8000.");

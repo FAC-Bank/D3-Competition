@@ -24,9 +24,9 @@
     // // --------------- 2008 data ---------------- \\ \\
 
 // Import initial data into document \\
-d3.csv("../assets/2008data.csv", function(dataset08) {
-    d3.csv("../assets/2010data.csv", function(dataset10) {
-        d3.csv("../assets/2013data.csv", function(dataset13) {
+d3.csv("2008data.csv", function(dataset08) {
+    d3.csv("2010data.csv", function(dataset10) {
+        d3.csv("2013data.csv", function(dataset13) {
 
             // Convert each value into an integer to allow numerical operations \\
             dataset08.forEach(function(d) {
@@ -48,6 +48,9 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
             var xScale = d3.scale.ordinal()
                             .domain(d3.range(dataset08.length))
                             .rangeRoundBands([padding, w - padding], 0.025);
+            
+            var xScaleTick = d3.scale.linear()
+                            .domain
 
             var yScaleQual = d3.scale.linear()
                             .domain([0, d3.max(dataset08, function(d) { return d.qualNum; })])
@@ -61,6 +64,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
             // Define X and both Y axes using scales \\
             var xAxis = d3.svg.axis()
                             .scale(xScale)
+                            .tickFormat(function(d) { return d.qual; })
                             .orient("bottom");
 
             var yAxisLeft = d3.svg.axis()
@@ -92,7 +96,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     y: function(d) { return (yScaleQual(d.qualNum)); },
                     "width": function(d) { return xScale.rangeBand(); },
                     "height": function(d) { return h - yScaleQual(d.qualNum) - padding; },
-                    "fill": function(d) { return "rgb(0, 0, " + ((d.qualNum) * 2)+ ")"; },
+                    "fill": function(d) { return "rgb(50, 210, " + ((d.qualNum) * 2)+ ")"; },
                 });
 
 
@@ -120,7 +124,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     cy: function(d) { return yScaleInc(d.avgInc);  },
                     r: function(d) { return h / 60; },
                     "stroke": "black",
-                    "stroke-width": "2px",
+//                    "stroke-width": "2px",
                     "fill": "grey",
                 });
 
@@ -218,7 +222,7 @@ d3.csv("../assets/2008data.csv", function(dataset08) {
                     .attr({
                         y: function(d) { return (yScaleQual(d.qualNum)); },
                         "height": function(d) { return h - yScaleQual(d.qualNum) - padding; },
-                        "fill": function(d) { return "rgb(0, 0, " + ((d.qualNum) * 2)+ ")"; },
+                        "class": "color2008",
                     });
 
 
