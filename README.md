@@ -6,7 +6,7 @@ We have chosen to look at the National household survey data and within that we 
 
 By the end of the week we hope to deply the app on Heroku.
 
-How to run:
+###How to run:
 ```
 npm install
 node server.js
