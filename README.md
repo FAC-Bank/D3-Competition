@@ -6,6 +6,12 @@ We have chosen to look at the National household survey data and within that we 
 
 By the end of the week we hope to deply the app on Heroku.
 
+###How to run:
+```
+npm install
+node server.js
+```
+
 ### Monday
 * Research and extract the data by the end of the day
 * Decide which type of visualisation we would like to go for
