@@ -19,13 +19,6 @@ server.route({
     }
 });
 
-    // method: "GET",
-    // path: "/graphs",
-    // handler: function(request, reply){
-    //     reply.file(__dirname, "/assets/2008data.csv");
-    // }
-// }]);
-
 
 server.start();
 console.log("Server running at port 8000.");
