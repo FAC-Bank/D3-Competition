@@ -12,7 +12,7 @@ server.route({
     path: "/{param}",
     handler: {
         directory: {
-            path: Path.join(__dirname, "/public")
+            path: Path.join(__dirname) + "/public"
         }
     }
 });
