@@ -1,5 +1,16 @@
 body {
     font-family: 'Khula', sans-serif;
+}
+
+
+svg {
+    display: block;
+    margin: auto;
+    
+}
+
+.btn-group {
+    display: block;
     margin: auto;
 }
 
@@ -25,3 +36,8 @@ body {
     font-family: sans-serif;
     font-size: 11px;
 }
+
+.color2008 {
+    fill: linear-gradient(90deg, #360033 10%, #0b8793 90%);
+}
+
